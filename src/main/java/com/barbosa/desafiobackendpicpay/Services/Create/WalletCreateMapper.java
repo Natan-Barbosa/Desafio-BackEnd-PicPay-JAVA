@@ -3,12 +3,15 @@ package com.barbosa.desafiobackendpicpay.Services.Create;
 import com.barbosa.desafiobackendpicpay.Entities.WalletEntity;
 import org.springframework.stereotype.Component;
 
+import java.math.BigDecimal;
+
 @Component
 public class WalletCreateMapper {
 
     public WalletEntity mapper(WalletCreateDto dto) {
         return WalletEntity.builder()
                 .email(dto.getEmail())
+                .balance(BigDecimal.ZERO)
                 .cpfOrcnpj(dto.getCpfOrcnpj())
                 .fullName(dto.getFullName())
                 .password(dto.getPassword())
