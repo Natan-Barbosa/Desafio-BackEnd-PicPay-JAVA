@@ -24,6 +24,25 @@ public class WalletExceptions {
                 .timeStamp(LocalDateTime.now()).build();
         return new ResponseEntity(badRequestMessage, HttpStatus.BAD_REQUEST);
     }
+    @ExceptionHandler(InvalidCPFException.class)
+    public ResponseEntity<ExceptionModel> InvalidCPFExceptionHandler(InvalidCPFException ex) {
+        ExceptionModel badRequestMessage = ExceptionModel.builder()
+                .title("BAD REQUEST")
+                .statusCode(HttpStatus.BAD_REQUEST.value())
+                .details(ex.getMessage())
+                .timeStamp(LocalDateTime.now()).build();
+        return new ResponseEntity(badRequestMessage, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(InvalidCNPJException.class)
+    public ResponseEntity<ExceptionModel> InvalidCNPJExceptionHandler(InvalidCNPJException ex) {
+        ExceptionModel badRequestMessage = ExceptionModel.builder()
+                .title("BAD REQUEST")
+                .statusCode(HttpStatus.BAD_REQUEST.value())
+                .details(ex.getMessage())
+                .timeStamp(LocalDateTime.now()).build();
+        return new ResponseEntity(badRequestMessage, HttpStatus.BAD_REQUEST);
+    }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<ExceptionModel> MethodArgumentNotValidExceptionHandler(MethodArgumentNotValidException ex) {
