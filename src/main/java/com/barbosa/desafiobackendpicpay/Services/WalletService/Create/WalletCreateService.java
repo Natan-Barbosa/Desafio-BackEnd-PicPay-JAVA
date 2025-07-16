@@ -1,7 +1,7 @@
-package com.barbosa.desafiobackendpicpay.Services.Create;
+package com.barbosa.desafiobackendpicpay.Services.WalletService.Create;
 
-import com.barbosa.desafiobackendpicpay.Entities.WalletEntity;
-import com.barbosa.desafiobackendpicpay.Exceptions.WalletAlreadyExistsException;
+import com.barbosa.desafiobackendpicpay.Entities.Wallet.WalletEntity;
+import com.barbosa.desafiobackendpicpay.Exceptions.Wallet.WalletAlreadyExistsException;
 import com.barbosa.desafiobackendpicpay.Repository.WalletRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

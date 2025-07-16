@@ -1,7 +1,7 @@
-package com.barbosa.desafiobackendpicpay.Entities;
+package com.barbosa.desafiobackendpicpay.Entities.Wallet;
 
-import com.barbosa.desafiobackendpicpay.Exceptions.InvalidCNPJException;
-import com.barbosa.desafiobackendpicpay.Exceptions.InvalidCPFException;
+import com.barbosa.desafiobackendpicpay.Exceptions.Wallet.InvalidCNPJException;
+import com.barbosa.desafiobackendpicpay.Exceptions.Wallet.InvalidCPFException;
 import jakarta.persistence.*;
 import lombok.*;
 

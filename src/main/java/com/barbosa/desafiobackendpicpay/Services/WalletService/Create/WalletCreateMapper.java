@@ -1,6 +1,6 @@
-package com.barbosa.desafiobackendpicpay.Services.Create;
+package com.barbosa.desafiobackendpicpay.Services.WalletService.Create;
 
-import com.barbosa.desafiobackendpicpay.Entities.WalletEntity;
+import com.barbosa.desafiobackendpicpay.Entities.Wallet.WalletEntity;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;

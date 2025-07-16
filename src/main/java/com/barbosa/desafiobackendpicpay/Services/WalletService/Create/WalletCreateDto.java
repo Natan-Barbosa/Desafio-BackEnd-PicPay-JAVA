@@ -1,6 +1,6 @@
-package com.barbosa.desafiobackendpicpay.Services.Create;
+package com.barbosa.desafiobackendpicpay.Services.WalletService.Create;
 
-import com.barbosa.desafiobackendpicpay.Entities.WalletTypeEnum;
+import com.barbosa.desafiobackendpicpay.Entities.Wallet.WalletTypeEnum;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;

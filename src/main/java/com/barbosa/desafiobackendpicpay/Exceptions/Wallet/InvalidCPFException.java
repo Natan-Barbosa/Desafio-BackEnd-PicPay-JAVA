@@ -1,4 +1,4 @@
-package com.barbosa.desafiobackendpicpay.Exceptions;
+package com.barbosa.desafiobackendpicpay.Exceptions.Wallet;
 
 public class InvalidCPFException extends RuntimeException {
     public InvalidCPFException(String message) {

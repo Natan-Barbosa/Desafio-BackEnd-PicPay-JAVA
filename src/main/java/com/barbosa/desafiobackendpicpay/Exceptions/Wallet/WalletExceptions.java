@@ -1,9 +1,8 @@
-package com.barbosa.desafiobackendpicpay.Exceptions;
+package com.barbosa.desafiobackendpicpay.Exceptions.Wallet;
 
 import com.barbosa.desafiobackendpicpay.Utils.ExceptionModel;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;

@@ -1,8 +1,8 @@
 package com.barbosa.desafiobackendpicpay.Controller;
 
-import com.barbosa.desafiobackendpicpay.Entities.WalletEntity;
-import com.barbosa.desafiobackendpicpay.Services.Create.WalletCreateDto;
-import com.barbosa.desafiobackendpicpay.Services.Create.WalletCreateService;
+import com.barbosa.desafiobackendpicpay.Entities.Wallet.WalletEntity;
+import com.barbosa.desafiobackendpicpay.Services.WalletService.Create.WalletCreateDto;
+import com.barbosa.desafiobackendpicpay.Services.WalletService.Create.WalletCreateService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

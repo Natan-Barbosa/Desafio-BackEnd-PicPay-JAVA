@@ -1,4 +1,4 @@
-package com.barbosa.desafiobackendpicpay.Entities;
+package com.barbosa.desafiobackendpicpay.Entities.Wallet;
 
 public enum WalletTypeEnum {
     USER(1,"user"),
