@@ -47,9 +47,9 @@ public class WalletExceptions {
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<ExceptionModel> MethodArgumentNotValidExceptionHandler(MethodArgumentNotValidException ex) {
         Map<String, String> errors = new HashMap<>();
-        ex.getBindingResult().getAllErrors()
+        ex.getFieldErrors()
                 .forEach(error -> {
-                    String errorTitle = ((FieldError) error).getField();
+                    String errorTitle = error.getField();
                     String errorMessage = error.getDefaultMessage();
                     errors.put(errorTitle, errorMessage);
                 });
