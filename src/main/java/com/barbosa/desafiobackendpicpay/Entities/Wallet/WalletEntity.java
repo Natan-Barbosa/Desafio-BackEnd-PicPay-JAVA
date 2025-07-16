@@ -1,11 +1,14 @@
 package com.barbosa.desafiobackendpicpay.Entities.Wallet;
 
+import com.barbosa.desafiobackendpicpay.Entities.Transaction.TransactionEntity;
 import com.barbosa.desafiobackendpicpay.Exceptions.Wallet.InvalidCNPJException;
 import com.barbosa.desafiobackendpicpay.Exceptions.Wallet.InvalidCPFException;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "wallet")
@@ -38,6 +41,12 @@ public class WalletEntity {
     @Enumerated(EnumType.STRING)
     private WalletTypeEnum walletType;
 
+    @OneToMany(mappedBy = "sender", cascade = {CascadeType.PERSIST,CascadeType.MERGE}, fetch = FetchType.LAZY)
+    private List<TransactionEntity> sentTransactions = new ArrayList<>();
+
+    @OneToMany(mappedBy = "receiver", cascade = {CascadeType.PERSIST,CascadeType.MERGE}, fetch = FetchType.LAZY)
+    private List<TransactionEntity> receivedTransactions = new ArrayList<>();
+
     public static WalletEntityBuilder builder() {
         return new WalletEntityBuilder();
     }
@@ -50,6 +59,8 @@ public class WalletEntity {
         private BigDecimal balance = BigDecimal.ZERO;
         private String password;
         private WalletTypeEnum walletType;
+        private List<TransactionEntity> sentTransactions = new ArrayList<>();
+        private List<TransactionEntity> receivedTransactions = new ArrayList<>();
 
         public WalletEntityBuilder id(String id) {
             this.id = id;
@@ -86,10 +97,20 @@ public class WalletEntity {
             return this;
         }
 
+        public WalletEntityBuilder sentTransactions(List<TransactionEntity> sentTransactions) {
+            this.sentTransactions = sentTransactions;
+            return this;
+        }
+
+        public WalletEntityBuilder receivedTransactions(List<TransactionEntity> receivedTransactions) {
+            this.receivedTransactions = receivedTransactions;
+            return this;
+        }
+
         public WalletEntity build() {
             // Validação antes de construir
             validateCpfCnpj();
-            return new WalletEntity(id, fullName, cpfOrcnpj, email, balance, password, walletType);
+            return new WalletEntity(id, fullName, cpfOrcnpj, email, balance, password, walletType,sentTransactions,receivedTransactions);
         }
 
         private void validateCpfCnpj() {
