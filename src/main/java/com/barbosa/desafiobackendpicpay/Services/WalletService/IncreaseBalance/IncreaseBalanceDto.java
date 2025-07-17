@@ -9,6 +9,8 @@ import java.math.BigDecimal;
 @Getter
 @Setter
 @NoArgsConstructor
+@Builder
+@AllArgsConstructor
 public class IncreaseBalanceDto {
     @NotEmpty(message = "Field Cannot Be Empty")
     private String cpfOrcnpj;
