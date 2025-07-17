@@ -13,7 +13,6 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.support.TransactionSynchronization;
 import org.springframework.transaction.support.TransactionSynchronizationManager;
 
-import java.time.LocalDateTime;
 import java.util.concurrent.CompletableFuture;
 
 @Service
@@ -28,6 +27,9 @@ public class TransactionService {
 
     @Autowired
     NotificationService notificationService;
+
+    @Autowired
+    TransactionMapper transactionMapper;
 
     public String executeTransaction(TransactionServiceDto dto) {
         WalletEntity sender = walletRepository.findById(dto.getSenderId())
@@ -46,11 +48,7 @@ public class TransactionService {
                     "You Current Balance Is: " + sender.getBalance());
         }
 
-        TransactionEntity transaction = TransactionEntity.builder()
-                .value(dto.getValue())
-                .timeStamp(LocalDateTime.now())
-                .receiver(receiver)
-                .sender(sender).build();
+        TransactionEntity transaction = transactionMapper.mapper(sender, receiver, dto);
 
         sender.setBalance(sender.getBalance().subtract(dto.getValue()));
         sender.getSentTransactions().add(transaction);
@@ -59,6 +57,7 @@ public class TransactionService {
         receiver.getSentTransactions().add(transaction);
 
         WalletEntity savedSender = walletRepository.save(sender);
+        walletRepository.save(receiver);
 
         TransactionSynchronizationManager.registerSynchronization(new TransactionSynchronization() {
             @Override
