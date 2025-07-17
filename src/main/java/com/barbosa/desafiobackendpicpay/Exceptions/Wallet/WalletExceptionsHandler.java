@@ -12,7 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @ControllerAdvice
-public class WalletExceptions {
+public class WalletExceptionsHandler {
 
     @ExceptionHandler(WalletAlreadyExistsException.class)
     public ResponseEntity<ExceptionModel> WalletAlreadyExistsExceptionHandler(WalletAlreadyExistsException ex) {
@@ -35,6 +35,26 @@ public class WalletExceptions {
 
     @ExceptionHandler(InvalidCNPJException.class)
     public ResponseEntity<ExceptionModel> InvalidCNPJExceptionHandler(InvalidCNPJException ex) {
+        ExceptionModel badRequestMessage = ExceptionModel.builder()
+                .title("BAD REQUEST")
+                .statusCode(HttpStatus.BAD_REQUEST.value())
+                .details(ex.getMessage())
+                .timeStamp(LocalDateTime.now()).build();
+        return new ResponseEntity(badRequestMessage, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(InvalidCredentialsException.class)
+    public ResponseEntity<ExceptionModel> InvalidCredentialsExceptionHandler(InvalidCredentialsException ex) {
+        ExceptionModel badRequestMessage = ExceptionModel.builder()
+                .title("BAD REQUEST")
+                .statusCode(HttpStatus.BAD_REQUEST.value())
+                .details(ex.getMessage())
+                .timeStamp(LocalDateTime.now()).build();
+        return new ResponseEntity(badRequestMessage, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(WalletNotExistsException.class)
+    public ResponseEntity<ExceptionModel> WalletNotExistsExceptionHandler(WalletNotExistsException ex) {
         ExceptionModel badRequestMessage = ExceptionModel.builder()
                 .title("BAD REQUEST")
                 .statusCode(HttpStatus.BAD_REQUEST.value())
