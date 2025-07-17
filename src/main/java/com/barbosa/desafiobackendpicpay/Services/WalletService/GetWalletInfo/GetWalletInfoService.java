@@ -15,8 +15,8 @@ public class GetWalletInfoService {
     @Autowired
     GetWalletInfoMapper getWalletInfoMapper;
 
-    public GetWalletInfoDto get(String cpfOrcnpj) {
-        WalletEntity wallet = walletRepository.findById(cpfOrcnpj)
+    public GetWalletInfoDto get(String id) {
+        WalletEntity wallet = walletRepository.findById(id)
                 .orElseThrow(() -> new WalletNotExistsException("The Informed Wallet Don't Exists, Verify The Sent Data"));
         GetWalletInfoDto mapper = getWalletInfoMapper.mapper(wallet);
         return mapper;
