@@ -39,7 +39,7 @@ public class WalletController {
         return new ResponseEntity<>(serviceResponse, HttpStatus.OK);
     }
 
-    @PostMapping("increase")
+    @PutMapping("increase")
     public ResponseEntity<String> increase(@Valid @RequestBody IncreaseBalanceDto dto) {
         String serviceResponse = increaseBalanceService.increase(dto);
         return new ResponseEntity<>(serviceResponse, HttpStatus.CREATED);
