@@ -21,6 +21,7 @@ Esta aplicação implementa um sistema de transações financeiras que permite:
 - **MySQL** - Banco de dados
 - **Docker** - Containerização do banco de dados
 - **Lombok** - Redução de código boilerplate
+- **Swagger/OpenAPI** - Documentação interativa da API
 - **JUnit** - Testes unitários
 - **Mockito** - Mocks para testes
 
@@ -33,6 +34,8 @@ src/
 │   │   ├── Client/          # Clientes para APIs externas
 │   │   │   ├── Authorization # Cliente para serviço de autorização
 │   │   │   └── Notification  # Cliente para serviço de notificação
+│   │   ├── Config/          # Configurações da aplicação
+│   │   │   └── SwaggerConfig # Configuração do Swagger/OpenAPI
 │   │   ├── Controller/      # Controladores REST
 │   │   ├── Entities/        # Entidades JPA
 │   │   ├── Exceptions/      # Exceções customizadas e handlers
@@ -62,8 +65,8 @@ src/
 
 ### 1. Clone o repositório
 ```bash
-git clone https://github.com/KingBarbosa/Desafio-BackEnd-PicPay-JAVA
-cd desafiobackendpicpay
+git clone git@github.com:KingBarbosa/Desafio-BackEnd-PicPay-JAVA.git
+cd Desafio-BackEnd-PicPay-JAVA
 ```
 
 ### 2. Configure o banco de dados
@@ -92,6 +95,18 @@ mvn spring-boot:run
 ```
 
 A aplicação estará disponível em `http://localhost:8080`
+
+## 📖 Documentação da API
+
+A documentação interativa da API está disponível via Swagger UI:
+
+**Acesse:** `http://localhost:8080/swagger-ui/index.html`
+
+O Swagger fornece uma interface interativa onde você pode:
+- Visualizar todos os endpoints disponíveis
+- Testar as requisições diretamente no navegador
+- Ver os modelos de dados de request/response
+- Consultar códigos de status e possíveis erros
 
 ## 📚 Endpoints da API
 
