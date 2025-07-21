@@ -175,7 +175,7 @@ Este projeto está sob a licença MIT. Veja o arquivo `LICENSE` para mais detalh
 ## 👨‍💻 Autor
 
 **Natan Barbosa**
-- GitHub: [https://github.com/KingBarbosa](https://github.com/seu-usuario)
+- GitHub: [https://github.com/Natan-Barbosa](https://github.com/Natan-Barbosa)
 
 ## 🔗 Links Úteis
 
