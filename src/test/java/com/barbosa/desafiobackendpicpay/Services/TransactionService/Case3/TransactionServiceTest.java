@@ -52,12 +52,11 @@ class TransactionServiceTest {
                     .thenReturn(Optional.ofNullable(senderFakeData));
             Mockito.when(walletRepository.findById(fakeDto.getReceiverId()))
                     .thenReturn(Optional.ofNullable(receiverFakeData));
-            Mockito.doNothing().when(authorizationService).authorize();
 
             assertThrows(IllegalTransactionException.class, () -> transactionService.executeTransaction(fakeDto));
 
             Mockito.verify(walletRepository, Mockito.times(2)).findById(ArgumentMatchers.any());
-            Mockito.verify(authorizationService).authorize();
+            Mockito.verify(authorizationService,Mockito.never()).authorize();
             Mockito.verify(transactionMapper,Mockito.never()).mapper(ArgumentMatchers.any(), ArgumentMatchers.any(), ArgumentMatchers.any());
             Mockito.verify(walletRepository, Mockito.never()).save(ArgumentMatchers.any());
             mockTransaction.verify(() ->
