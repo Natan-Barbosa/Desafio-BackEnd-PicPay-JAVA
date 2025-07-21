@@ -65,7 +65,7 @@ src/
 
 ### 1. Clone o repositório
 ```bash
-git clone git@github.com:KingBarbosa/Desafio-BackEnd-PicPay-JAVA.git
+git clone git@github.com:Natan-Barbosa/Desafio-BackEnd-PicPay-JAVA.git
 cd Desafio-BackEnd-PicPay-JAVA
 ```
 
