@@ -50,10 +50,10 @@ public class TransactionService {
 
         TransactionEntity transaction = transactionMapper.mapper(sender, receiver, dto);
 
-        sender.setBalance(sender.getBalance().subtract(dto.getValue()));
+        sender.decreaseBalance(dto.getValue());
         sender.getSentTransactions().add(transaction);
 
-        receiver.setBalance(receiver.getBalance().add(dto.getValue()));
+        receiver.increaseBalance(dto.getValue());
         receiver.getSentTransactions().add(transaction);
 
         WalletEntity savedSender = walletRepository.save(sender);
