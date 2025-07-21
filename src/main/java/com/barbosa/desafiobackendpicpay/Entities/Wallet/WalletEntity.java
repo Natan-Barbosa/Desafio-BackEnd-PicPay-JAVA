@@ -51,6 +51,14 @@ public class WalletEntity {
     @OneToMany(mappedBy = "receiver", cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
     private List<TransactionEntity> receivedTransactions = new ArrayList<>();
 
+    public void increaseBalance(BigDecimal value){
+        this.balance = this.balance.add(value);
+    }
+
+    public void decreaseBalance(BigDecimal value){
+        this.balance = this.balance.subtract(value);
+    }
+
     public boolean isSeller() {
         return Objects.equals(this.getWalletType(),WalletTypeEnum.SELLER);
     }
