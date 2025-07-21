@@ -37,7 +37,6 @@ public class TransactionService {
         WalletEntity receiver = walletRepository.findById(dto.getReceiverId())
                 .orElseThrow(() -> new WalletNotExistsException("The Receiver Wallet Does Not Exists !"));
 
-        authorizationService.authorize();
 
         if (sender.isSeller()) {
             throw new IllegalTransactionException("Is Not Permit The Seller Send Value To Anybody");
@@ -58,6 +57,8 @@ public class TransactionService {
 
         WalletEntity savedSender = walletRepository.save(sender);
         walletRepository.save(receiver);
+
+        authorizationService.authorize();
 
         TransactionSynchronizationManager.registerSynchronization(new TransactionSynchronization() {
             @Override
